@@ -61,15 +61,15 @@ public class CoffeeShop extends Application {
 		completeOrder = new Button("Complete Order");
 		deleteOrder = new Button("Delete Order");
 
-		btnCream = new Button("add Cream");
+		btnCream = new Button("add Cream: $.50");
 //		btnCream.setStyle("-fx-background-color: rgb(60,60,60)");
-		btnSugar = new Button("add Sugar");
+		btnSugar = new Button("add Sugar: $.50");
 //		btnSugar.setStyle("-fx-background-color: rgb(60,60,60)");
-		btnExtraShot = new Button("add Extra Shot");
+		btnExtraShot = new Button("add Extra Shot: $1.10");
 //		btnExtraShot.setStyle("-fx-background-color: rgb(60,60,60)");
-		btnFrenchVanillaSwirl = new Button("add French Vanilla Swirl");
+		btnFrenchVanillaSwirl = new Button("add French Vanilla Swirl: $.75");
 //		btnFrenchVanillaSwirl.setStyle("-fx-background-color: rgb(60,60,60)");
-		btnAlmondMilk = new Button("add Almond Milk");
+		btnAlmondMilk = new Button("add Almond Milk: $1.0");
 //		btnAlmondMilk.setStyle("-fx-background-color: rgb(60,60,60)");
 
 
@@ -123,35 +123,35 @@ public class CoffeeShop extends Application {
 			btnExtraShot.setDisable(false);
 			completeOrder.setDisable(false);
 			deleteOrder.setDisable(false);
-			txt.appendText("Basic Coffee: $3.99 \n");
+			txt.appendText("Black Coffee: $3.99 \n");
 
 			btnCream.setOnAction(action -> {
 				this.order = new Cream (order);
-				txt.appendText("\n" + " + Cream: $.50" + "\n = $" + order.makeCoffee() + "\n");
+				txt.appendText("\n" + " + Cream: $.50" );
 
 			});
 
 			btnSugar.setOnAction(action -> {
 				this.order = new Sugar (order);
-				txt.appendText("\n" + " + Sugar: $.50"+ "\n = $" + order.makeCoffee() + "\n");
+				txt.appendText("\n" + " + Sugar: $.50" );
 
 			});
 
 			btnExtraShot.setOnAction(action -> {
 				this.order = new ExtraShot (order);
-				txt.appendText("\n" +" + Extra Shot: $1.10"+ "\n = $" + order.makeCoffee() + "\n");
+				txt.appendText("\n" +" + Extra Shot: $1.10");
 
 			});
 
 			btnFrenchVanillaSwirl.setOnAction(action -> {
 				this.order = new FrenchVanillaSwirl (order);
-				txt.appendText("\n" +" + French Vanilla Swirl: $.75"+ "\n = $" + order.makeCoffee() + "\n");
+				txt.appendText("\n" +" + French Vanilla Swirl: $.75");
 
 			});
 
 			btnAlmondMilk.setOnAction(action -> {
 				this.order = new AlmondMilk (order);
-				txt.appendText("\n" +" + Almond Milk: $1.0"+ "\n = $" + order.makeCoffee() + "\n");
+				txt.appendText("\n" +" + Almond Milk: $1.0");
 
 			});
 
@@ -161,14 +161,17 @@ public class CoffeeShop extends Application {
 		completeOrder.setOnAction(e-> {
 			handle();
 			double cost = order.makeCoffee();
-			txt.appendText("\n\n" + "Total: $" + cost + "\n\n" + "Thank You, Visit Again.");
 
+			txt.appendText("\n\n" + "Total: $" + cost + "\n\n" + "Thank You, Visit Again.");
+			this.order = new BasicCoffee();
 		});
 
 		deleteOrder.setOnAction(e-> {
 			handle();
 			txt.setText("Sorry! We couldn't satisfy your need, " +
 					"\n\nHave a nice day!");
+			this.order = new BasicCoffee();
+
 		});
 
 	}
