@@ -2,7 +2,6 @@
 public class ExtraShot extends CoffeeDecorator {
 
 	private double cost = 1.10;
-	
 	ExtraShot(Coffee specialCoffee){
 		super(specialCoffee);
 	}

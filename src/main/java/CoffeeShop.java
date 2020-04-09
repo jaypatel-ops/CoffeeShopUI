@@ -34,6 +34,8 @@ public class CoffeeShop extends Application {
 	VBox vb2;
 	ImageView iView;
 
+	Coffee order = new BasicCoffee();
+
 	//	ImageView imageV;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -64,9 +66,9 @@ public class CoffeeShop extends Application {
 
 		btnCream = new Button("add Cream");
 		btnSugar = new Button("add Sugar");
-		btnExtraShot = new Button("add ExtraShot");
+		btnExtraShot = new Button("add Extra Shot");
 		btnFrenchVanillaSwirl = new Button("add French Vanilla Swirl");
-		btnAlmondMilk = new Button("add AlmondMilk");
+		btnAlmondMilk = new Button("add Almond Milk");
 
 
 		txt = new TextArea();
@@ -77,10 +79,6 @@ public class CoffeeShop extends Application {
 		txt.setPrefSize(300, 350);
 		txt.setStyle("-fx-border-width: 5;");
 		txt.setStyle("-fx-border-color: black;");
-
-
-//		hb = new HBox(0,txt);
-
 
 		vb = new VBox(0,txt);
 		vb.setLayoutX(210);
@@ -97,10 +95,10 @@ public class CoffeeShop extends Application {
 		Image image = new Image("file:src/main/resources/Coffee.jpg");
 		BackgroundSize bgSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, true);
 		BackgroundImage bgImage = new BackgroundImage(image,
-									BackgroundRepeat.NO_REPEAT,
-									BackgroundRepeat.NO_REPEAT,
-									BackgroundPosition.CENTER,
-									bgSize);
+				BackgroundRepeat.NO_REPEAT,
+				BackgroundRepeat.NO_REPEAT,
+				BackgroundPosition.CENTER,
+				bgSize);
 
 		Background bgr = new Background(bgImage);
 		root.setBackground(bgr);
@@ -119,9 +117,10 @@ public class CoffeeShop extends Application {
 //		btnCream.setOnAction(e-> txt.setText("Total" + cost));
 //		btnSugar.setOnAction(e-> txt.setText("Total" + cost));
 
-		double total = 3.99;
+//		double total = 3.99;
 		handle();
 		startOrder.setOnAction(e -> {
+
 			txt.clear();
 			startOrder.setDisable(true);
 			btnCream.setDisable(false);
@@ -132,44 +131,34 @@ public class CoffeeShop extends Application {
 			completeOrder.setDisable(false);
 			deleteOrder.setDisable(false);
 
-			Coffee order1 = new Cream (new BasicCoffee());
 
 			btnCream.setOnAction(action -> {
-//				Coffee order1 = new Cream (new BasicCoffee());
-				double cost = order1.makeCoffee();
-				txt.appendText("\n" +"+ cream: $.50");
+				this.order = new Cream (order);
+				txt.appendText("\n" + " + Cream: $.50" + "\n = $" + order.makeCoffee() + "\n");
 
-//				txt.appendText("Total:" + cost);
 			});
 
 			btnSugar.setOnAction(action -> {
-//				Coffee order2 = new Sugar (new BasicCoffee());
-				double cost = order1.makeCoffee();
-				txt.appendText("\n" + " + sugar: $.50");
+				this.order = new Sugar (order);
+				txt.appendText("\n" + " + Sugar: $.50"+ "\n = $" + order.makeCoffee() + "\n");
 
-//				txt.appendText("Total:" + cost);
 			});
 
 			btnExtraShot.setOnAction(action -> {
-//				Coffee order3 = new ExtraShot(new BasicCoffee());
-				double cost = order1.makeCoffee();
-				txt.appendText("\n" +" + ExtraShot: $1.10");
-//				txt.appendText("Total:" + cost);
+				this.order = new ExtraShot (order);
+				txt.appendText("\n" +" + Extra Shot: $1.10"+ "\n = $" + order.makeCoffee() + "\n");
+
 			});
 
 			btnFrenchVanillaSwirl.setOnAction(action -> {
-//				Coffee order4 = new FrenchVanillaSwirl (new BasicCoffee());
-				double cost = order1.makeCoffee();
-				txt.appendText("\n" +" + French Vanilla Swirl: $.75");
-//				txt.appendText("Total:" + cost);
+				this.order = new FrenchVanillaSwirl (order);
+				txt.appendText("\n" +" + French Vanilla Swirl: $.75"+ "\n = $" + order.makeCoffee() + "\n");
 
 			});
 
 			btnAlmondMilk.setOnAction(action -> {
-//				Coffee order5 = new AlmondMilk (new BasicCoffee());
-				double cost = order1.makeCoffee();
-				txt.appendText("\n" +" + Almond Milk: $1.0");
-//				txt.appendText("Total:" + cost);
+				this.order = new AlmondMilk (order);
+				txt.appendText("\n" +" + Almond Milk: $1.0"+ "\n = $" + order.makeCoffee() + "\n");
 
 			});
 
@@ -177,21 +166,19 @@ public class CoffeeShop extends Application {
 
 
 		completeOrder.setOnAction(e-> {
-
 			handle();
-			txt.appendText("\n\n"+ "Total: $ ---" );
+			double cost = order.makeCoffee();
+			txt.appendText("\n\n" + "Total: $" + cost + "\n\n" + "Thank You, Visit Again.");
+
 		});
 
 		deleteOrder.setOnAction(e-> {
-
 			handle();
-			txt.setText("Sorry We couldn't satisfy your need, " +
-						"\nHave a nice day!");
+			txt.setText("Sorry! We couldn't satisfy your need, " +
+					"\nHave a nice day!");
 		});
 
 	}
-
-
 
 }
 
