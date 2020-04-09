@@ -27,12 +27,9 @@ public class CoffeeShop extends Application {
 
 	Pane root = new Pane();
 	TextArea txt;
-	HBox hb;
-	HBox hb2;
 	VBox vb;
 	VBox vb3;
 	VBox vb2;
-	ImageView iView;
 
 	Coffee order = new BasicCoffee();
 
@@ -65,19 +62,24 @@ public class CoffeeShop extends Application {
 		deleteOrder = new Button("Delete Order");
 
 		btnCream = new Button("add Cream");
+//		btnCream.setStyle("-fx-background-color: rgb(60,60,60)");
 		btnSugar = new Button("add Sugar");
+//		btnSugar.setStyle("-fx-background-color: rgb(60,60,60)");
 		btnExtraShot = new Button("add Extra Shot");
+//		btnExtraShot.setStyle("-fx-background-color: rgb(60,60,60)");
 		btnFrenchVanillaSwirl = new Button("add French Vanilla Swirl");
+//		btnFrenchVanillaSwirl.setStyle("-fx-background-color: rgb(60,60,60)");
 		btnAlmondMilk = new Button("add Almond Milk");
+//		btnAlmondMilk.setStyle("-fx-background-color: rgb(60,60,60)");
 
 
 		txt = new TextArea();
-		txt.setStyle("-fx-border-color: red");
+//		txt.setStyle("-fx-border-color: red");
 
 		txt.setLayoutX(100);
 		txt.setLayoutY(90);
 		txt.setPrefSize(300, 350);
-		txt.setStyle("-fx-border-width: 5;");
+		txt.setStyle("-fx-border-width: 10;");
 		txt.setStyle("-fx-border-color: black;");
 
 		vb = new VBox(0,txt);
@@ -109,15 +111,6 @@ public class CoffeeShop extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.show();
 
-//		Coffee order = new AlmondMilk(new FrenchVanillaSwirl(new Sugar(new Cream( new ExtraShot(new BasicCoffee())))));
-
-//		double cost = order.makeCoffee();
-//		System.out.println("Total: " + cost);
-
-//		btnCream.setOnAction(e-> txt.setText("Total" + cost));
-//		btnSugar.setOnAction(e-> txt.setText("Total" + cost));
-
-//		double total = 3.99;
 		handle();
 		startOrder.setOnAction(e -> {
 
@@ -130,7 +123,7 @@ public class CoffeeShop extends Application {
 			btnExtraShot.setDisable(false);
 			completeOrder.setDisable(false);
 			deleteOrder.setDisable(false);
-
+			txt.appendText("Basic Coffee: $3.99 \n");
 
 			btnCream.setOnAction(action -> {
 				this.order = new Cream (order);
@@ -175,7 +168,7 @@ public class CoffeeShop extends Application {
 		deleteOrder.setOnAction(e-> {
 			handle();
 			txt.setText("Sorry! We couldn't satisfy your need, " +
-					"\nHave a nice day!");
+					"\n\nHave a nice day!");
 		});
 
 	}
