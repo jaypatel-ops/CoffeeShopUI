@@ -8,7 +8,7 @@ public class FrenchVanillaSwirl extends CoffeeDecorator {
 
     private double addFrenchVanillaSwirl(){
 
-        System.out.println(" + French Vanilla Swirl: $"+ cost);
+        System.out.println(" + French Vanilla Swirl: $.75");
 
         return cost;
 

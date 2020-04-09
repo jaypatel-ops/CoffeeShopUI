@@ -1,7 +1,7 @@
 
 public class ExtraShot extends CoffeeDecorator {
 
-	private double cost = 1.20;
+	private double cost = 1.10;
 	
 	ExtraShot(Coffee specialCoffee){
 		super(specialCoffee);
@@ -12,8 +12,7 @@ public class ExtraShot extends CoffeeDecorator {
 	}
 	
 	private double addShot() {
-		System.out.println(" + extra shot: $1.20");
-		
+		System.out.println(" + extra shot: $1.10");
 		return cost;
 	}
 }

@@ -8,7 +8,7 @@ public class AlmondMilk extends CoffeeDecorator {
 
     private double addAlmondMilk(){
 
-        System.out.println(" + Almond Milk: $"+ cost);
+        System.out.println(" + Almond Milk: $1.0");
 
         return cost;
 
